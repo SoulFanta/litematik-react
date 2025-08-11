@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import ProjectList from "./../widgets/projects-list/ui/project-list";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,5 +9,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <p>1</p>;
+  return (
+    <main className="">
+      <ProjectList />
+    </main>
+  );
 }
