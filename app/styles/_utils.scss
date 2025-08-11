@@ -1,0 +1,58 @@
+@use "media";
+@use "mixins";
+@use "sass:math";
+.container {
+    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-padding-x);
+
+    &--s {
+        max-width: calc(var(--container-width-s) + var(--container-padding-x) * 2);
+    }
+}
+
+.visually-hidden {
+    @include mixins.visually-hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.hidden-tablet {
+    @include media.tablet {
+        display: none !important;
+        border: 0 !important;
+    }
+}
+
+.visible-tablet {
+    @include media.tablet-above {
+        display: none !important;
+    }
+}
+
+.hidden-desktop {
+    @include media.desktop {
+        display: none !important;
+        border: 0 !important;
+    }
+}
+
+.visible-desktop {
+    @include media.desktop-above {
+        display: none !important;
+    }
+}
+
+.hidden-mobile {
+    @include media.mobile {
+        display: none !important;
+    }
+}
+
+.visible-mobile {
+    @include media.mobile-above {
+        display: none !important;
+    }
+}
