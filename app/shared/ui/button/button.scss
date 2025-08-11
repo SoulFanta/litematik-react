@@ -1,0 +1,112 @@
+:root {
+  /* Можно тюнить под свои переменные */
+  --btn-radius: var(--border-radius-small, 8px);
+  --btn-focus: var(--color-primary, #760135);
+
+  --btn-bg-primary: var(--color-primary, #760135);
+  --btn-fg-primary: var(--color-white, #fff);
+
+  --btn-bg-secondary: var(--color-gray-80, #ecedf0);
+  --btn-fg-secondary: var(--color-text, #0d0d0d);
+
+  --btn-bg-ghost: transparent;
+  --btn-fg-ghost: var(--color-text, #0d0d0d);
+  --btn-border-ghost: var(--color-gray-200, #c4c6cc);
+
+  --btn-bg-danger: #dc2626;
+  --btn-fg-danger: #fff;
+}
+
+.ui-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border: 0;
+  border-radius: var(--btn-radius);
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  transition: transform .12s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease;
+  text-decoration: none;
+
+  &--full { width: 100%; }
+
+  /* sizes */
+  &--sm { padding: 6px 10px; font-size: 14px; }
+  &--md { padding: 10px 14px; font-size: 16px; }
+  &--lg { padding: 14px 18px; font-size: 18px; }
+
+  /* variants */
+  &--primary {
+    background: var(--btn-bg-primary);
+    color: var(--btn-fg-primary);
+  }
+  &--primary:hover { transform: translateY(-1px); }
+  &--primary:active { transform: translateY(0); }
+
+  &--secondary {
+    background: var(--btn-bg-secondary);
+    color: var(--btn-fg-secondary);
+  }
+
+  &--ghost {
+    background: var(--btn-bg-ghost);
+    color: var(--btn-fg-ghost);
+    box-shadow: inset 0 0 0 1px var(--btn-border-ghost);
+  }
+  &--ghost:hover {
+    background: color-mix(in srgb, var(--btn-border-ghost) 12%, transparent);
+  }
+
+  &--danger {
+    background: var(--btn-bg-danger);
+    color: var(--btn-fg-danger);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--btn-focus) 25%, transparent);
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: .6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* внутренности */
+  &__label { position: relative; z-index: 1; }
+  &__slot  { display: inline-flex; align-items: center; }
+  &__slot--left  { margin-right: 4px; }
+  &__slot--right { margin-left: 4px; }
+
+  /* спиннер */
+  &__spinner {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 1.1em;
+    height: 1.1em;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    animation: ui-btn-spin .9s linear infinite;
+  }
+
+  &.is-loading {
+    pointer-events: none;
+  }
+  &.is-loading .ui-button__label,
+  &.is-loading .ui-button__slot {
+    opacity: 0;
+  }
+}
+
+@keyframes ui-btn-spin { to { transform: rotate(360deg); } }
