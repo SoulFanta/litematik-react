@@ -1,3 +1,26 @@
-.header{
-    
+@use "../../../styles/mixins";
+
+.header {
+    &__wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 5px;
+        text-align: center;
+        align-items: center;
+        // border-radius: var(--border-radius-small);
+    }
+    @include mixins.glass(var(--color-success));
+
+    &__title {
+        display: flex;
+        column-gap: 10px;
+        align-items: center;
+        &-beta {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            padding: 3px 10px;
+            border-radius: var(--border-radius-small);
+        }
+    }
 }
