@@ -1,0 +1,143 @@
+/* shared/ui/input/input.scss */
+
+/* Маппинг токенов компонента на глобальные переменные */
+:root {
+    --ui-input-radius: var(--border-radius-small);
+    --ui-input-border: 1px;
+
+    --ui-input-bg: var(--color-white);
+    --ui-input-bg-filled: var(--color-gray-80);
+    --ui-input-border-color: var(--color-gray-200);
+    --ui-input-border-focus: var(--color-primary);
+
+    --ui-input-text: var(--color-text);
+    --ui-input-placeholder: var(--color-gray-600);
+    --ui-input-help: var(--color-gray-500);
+    --ui-input-error: #dc2626;
+}
+
+.ui-input {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &--full {
+        width: 100%;
+    }
+}
+
+.ui-input__label {
+    font-size: 14px;
+    color: var(--ui-input-help);
+    user-select: none;
+}
+
+.ui-input__req {
+    color: var(--ui-input-error);
+    margin-left: 4px;
+}
+
+.ui-input__control {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: var(--ui-input-border) solid var(--ui-input-border-color);
+    border-radius: var(--ui-input-radius);
+    background: var(--ui-input-bg);
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+
+    &.ui-input--filled {
+        background: var(--ui-input-bg-filled);
+        border-color: transparent;
+    }
+
+    &.has-left .ui-input__field {
+        padding-left: 38px;
+    }
+    &.has-right .ui-input__field {
+        padding-right: 38px;
+    }
+
+    &:focus-within {
+        border-color: var(--ui-input-border-focus);
+        /* fallback для старых браузеров */
+        box-shadow: 0 0 0 3px rgba(118, 1, 53, 0.15);
+        /* современный акцент от var(--color-primary) */
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--ui-input-border-focus) 15%, transparent);
+    }
+
+    &.is-error {
+        border-color: var(--ui-input-error) !important;
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--ui-input-error) 20%, transparent);
+    }
+
+    &.is-disabled {
+        background: var(--color-gray-80);
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+}
+
+.ui-input__field {
+    flex: 1;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--ui-input-text);
+    padding: 10px 12px;
+    border-radius: inherit;
+    font: inherit;
+
+    &::placeholder {
+        color: var(--ui-input-placeholder);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+/* размеры */
+.ui-input--sm .ui-input__field {
+    padding: 6px 10px;
+    font-size: 14px;
+}
+.ui-input--md .ui-input__field {
+    padding: 10px 12px;
+    font-size: 16px;
+}
+.ui-input--lg .ui-input__field {
+    padding: 14px 14px;
+    font-size: 18px;
+}
+
+/* слоты (иконки) */
+.ui-input__slot {
+    position: absolute;
+    inset-block: 0;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    color: var(--ui-input-placeholder);
+
+    &--left {
+        left: 10px;
+    }
+    &--right {
+        right: 10px;
+    }
+}
+
+/* подписи/ошибки */
+.ui-input__help {
+    font-size: 12px;
+    color: var(--ui-input-help);
+
+    &.is-error {
+        color: var(--ui-input-error);
+    }
+}
