@@ -9,7 +9,6 @@ import {
 
 import type { Route } from "./+types/root";
 import "./styles/styles.scss";
-
 import Header from "./feauters/header/ui/header";
 
 // export const links: Route.LinksFunction = () => [
@@ -60,8 +59,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         ? "The requested page could not be found."
         : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details =import Header from './feauters/header/ui/header';
- error.message;
+    details = error.message;
     stack = error.stack;
   }
 
