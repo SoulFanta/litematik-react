@@ -1,6 +1,14 @@
 import { useLoaderData } from "react-router";
 import type { Route } from "./+types/home";
 
+export async function loader({ params }: { params: { projectId?: string } }) {
+  const projectId = params.projectId;
+  if (!projectId) {
+    throw new Response("projectId is required", { status: 400 });
+  }
+  return { projectId };
+}
+
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Страница проекта" },
@@ -8,11 +16,7 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-async function loader({ projectId }: { projectId: string }) {
-  return { projectId: projectId };
-}
-
 export default function ProjectPage() {
-  const { projectId } = useLoaderData() as { projectId: string };
+  const { projectId } = useLoaderData<typeof loader>();
   return <p>{projectId}</p>;
 }
