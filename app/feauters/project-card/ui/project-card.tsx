@@ -4,10 +4,15 @@ import { Link } from "react-router";
 
 interface IProjectCard {
   title: string;
+  description?: string;
   progress: number;
 }
 
-export default function ProjectCard({ title, progress }: IProjectCard) {
+export default function ProjectCard({
+  title,
+  progress,
+  description,
+}: IProjectCard) {
   return (
     <div className="project-card">
       <div className="project-card__inner">
@@ -21,7 +26,10 @@ export default function ProjectCard({ title, progress }: IProjectCard) {
         </div>
 
         <div className="project-card__face project-card__face--back">
-          <Link className="project-card__more" to={"/project/id/:projectId"}>Подробнее</Link>
+          <Link className="project-card__more" to={"/project/id/:projectId"}>
+            Подробнее
+          </Link>
+          {!!description ? <p>{description}</p> : <p>Заглушка</p>}
         </div>
       </div>
     </div>

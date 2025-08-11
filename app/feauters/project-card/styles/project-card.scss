@@ -1,7 +1,9 @@
+@use "../../../styles/media";
+
 .project-card {
   width: 100%;
-  height: 300px;              /* оставь свою высоту/макс-высоту */
-  perspective: 1000px;        /* для 3D */
+  height: 300px; /* оставь свою высоту/макс-высоту */
+  perspective: 1000px; /* для 3D */
   border-radius: var(--border-radius);
 
   &__inner {
@@ -34,17 +36,26 @@
     -webkit-backface-visibility: hidden;
   }
 
-  &__face--front { /* лицевая как есть */ }
+  &__face--front {
+    /* лицевая как есть */
+  }
 
   &__face--back {
     transform: rotateY(180deg);
     background-color: #303030;
-    display: grid;
+    display: flex;
+    flex-direction: column-reverse;
+
     place-items: center;
   }
 
-  &__donut { width: 95%; height: 70%; }
-  &__title { margin: 0; }
+  &__donut {
+    width: 95%;
+    height: 70%;
+  }
+  &__title {
+    margin: 0;
+  }
 
   &__more {
     font-size: 18px;
@@ -54,5 +65,9 @@
     border-radius: var(--border-radius-small);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);
+
+    @include media.hover {
+      background: rgba(68, 65, 65, 0.08);
+    }
   }
 }
