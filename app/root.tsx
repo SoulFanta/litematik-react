@@ -10,6 +10,8 @@ import {
 import type { Route } from "./+types/root";
 import "./styles/styles.scss";
 
+import Header from "./feauters/header/ui/header";
+
 // export const links: Route.LinksFunction = () => [
 //   { rel: "preconnect", href: "https://fonts.googleapis.com" },
 //   {
@@ -33,6 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <Header/>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -57,7 +60,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         ? "The requested page could not be found."
         : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
+    details =import Header from './feauters/header/ui/header';
+ error.message;
     stack = error.stack;
   }
 
