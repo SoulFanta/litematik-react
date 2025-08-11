@@ -1,0 +1,104 @@
+@use "../../../styles/mixins";
+
+.draft {
+    margin-top: 20px;
+    background-color: var(--color-white);
+    border-top-left-radius: var(--border-radius-small);
+    border-top-right-radius: var(--border-radius-small);
+    overflow: hidden;
+
+    &__header {
+        background-color: var(--color-primary-alt);
+        color: var(--color-white);
+        padding: 10px 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__info {
+        background: var(--color-white);
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        column-gap: 17px;
+
+        &-blocks {
+            margin-right: auto;
+        }
+        &-search {
+            min-width: 220px;
+        }
+    }
+
+    /* «таблица» на grid */
+    &__table {
+        @include mixins.glass(var(--color-primary-alt));
+        border-radius: var(--border-radius-small);
+        padding: 8px;
+        display: grid;
+        row-gap: 8px;
+
+        &-header {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 140px 140px;
+            gap: 8px;
+            background: var(--color-gray-80);
+            color: var(--color-text);
+            border-radius: var(--border-radius-small);
+            padding: 10px 12px;
+        }
+
+        &-head {
+            font-weight: 600;
+        }
+        &-head--num {
+            text-align: right;
+        }
+
+        &-body {
+            display: grid;
+            gap: 8px;
+        }
+
+        &-row {
+            display: grid;
+            grid-template-columns: 1fr 140px 140px;
+            gap: 8px;
+            background: var(--color-white-alt);
+            box-shadow: inset 0 0 0 1px var(--color-gray-200);
+            border-radius: var(--border-radius-small);
+            padding: 12px;
+            align-items: center;
+            transition: background 0.15s ease;
+            &:hover {
+                background: color-mix(in srgb, var(--color-white-alt) 85%, var(--color-gray-80));
+            }
+        }
+
+        &-cell {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        &-cell--name {
+            padding-right: 8px;
+        }
+        &-cell--num {
+            text-align: right;
+        }
+
+        &-empty {
+            text-align: center;
+            font-size: 15px;
+            color: var(--color-gray-600);
+            background: var(--color-white);
+            border-radius: var(--border-radius-small);
+            box-shadow: inset 0 0 0 1px var(--color-gray-200);
+            padding: 16px;
+        }
+    }
+}
