@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router";
 import type { Route } from "./+types/home";
+import Draft from "./../widgets/draft/ui/draft";
 
 export async function loader({ params }: { params: { projectId?: string } }) {
   const projectId = params.projectId;
@@ -18,5 +19,15 @@ export function meta({}: Route.MetaArgs) {
 
 export default function ProjectPage() {
   const { projectId } = useLoaderData<typeof loader>();
-  return <p>{projectId}</p>;
+
+  const rows = [
+    { name: "Земля", qty: 10, collected: 3 },
+    { name: "Песок", qty: 6, collected: 2 },
+    // ...
+  ];
+  return (
+    <main className="container">
+      <Draft rows={rows} />
+    </main>
+  );
 }
