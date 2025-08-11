@@ -9,13 +9,16 @@ export default function ProjectList() {
         <Input placeholder="Введите запрос" size="sm" />
       </header>
       <div className="project-list__grid">
-        <ProjectCard title={"карточка1"} progress={0} />
+        <ProjectCard
+          title={"Замок"}
+          progress={0}
+          description="lorem imkdslfdksflsdf fdsfsdfnsdf dskfmsdlfmsd sdkfkmsd;lfmsdf sdlkfmsdlfds"
+        />
         <ProjectCard title={"карточка2"} progress={10} />
         <ProjectCard title={"карточка3"} progress={15} />
         <ProjectCard title={"карточка4"} progress={20} />
         <ProjectCard title={"карточка5"} progress={100} />
         <ProjectCard title={"карточка6"} progress={100} />
-      
       </div>
     </section>
   );
