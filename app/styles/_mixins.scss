@@ -9,13 +9,11 @@ $bp-mobile: media.$mobile;
 $bp-tablet: media.$tablet;
 $bp-desktop: media.$desktop;
 
-$range-mo-ta: strip-unit($bp-tablet) - strip-unit($bp-mobile); 
-$range-ta-de: strip-unit($bp-desktop) - strip-unit($bp-tablet); 
-$range-mo-de: strip-unit($bp-desktop) - strip-unit($bp-mobile); 
-
+$range-mo-ta: strip-unit($bp-tablet) - strip-unit($bp-mobile);
+$range-ta-de: strip-unit($bp-desktop) - strip-unit($bp-tablet);
+$range-mo-de: strip-unit($bp-desktop) - strip-unit($bp-mobile);
 
 @mixin fluid-text($d, $t-or-m, $m: null) {
-
     @if $m == null {
         $m: $t-or-m;
 
@@ -23,16 +21,13 @@ $range-mo-de: strip-unit($bp-desktop) - strip-unit($bp-mobile);
         $c: strip-unit($m) - math.div($k * strip-unit($bp-mobile), 100);
 
         font-size: clamp(#{$m}px, calc(#{$k}vw + #{$c}px), #{$d}px);
-    }
-
-    @else {
+    } @else {
         $t: $t-or-m;
 
         $k1: math.div(strip-unit($t) - strip-unit($m), $range-mo-ta) * 100;
         $c1: strip-unit($m) - math.div($k1 * strip-unit($bp-mobile), 100);
 
         font-size: clamp(#{$m}px, calc(#{$k1}vw + #{$c1}px), #{$t}px);
-
 
         @media (min-width: #{$bp-tablet}) {
             $k2: math.div(strip-unit($d) - strip-unit($t), $range-ta-de) * 100;
@@ -93,3 +88,16 @@ $range-mo-de: strip-unit($bp-desktop) - strip-unit($bp-mobile);
     clip: rect(0 0 0 0) !important;
     overflow: hidden !important;
 }
+
+@mixin glass($color, $bg: 38%, $border: 67%, $blur: 6.6px) {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur($blur);
+    -webkit-backdrop-filter: blur($blur);
+
+    // смешиваем цвет с прозрачностью
+    background: color-mix(in srgb, $color $bg, transparent);
+    border: 1px solid color-mix(in srgb, $color $border, transparent);
+}
+
+
+

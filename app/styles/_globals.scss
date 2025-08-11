@@ -4,11 +4,10 @@ html {
     overflow-x: hidden;
 }
 body {
-    // @include mixins.fluid-text(18, 16);
+    @include mixins.fluid-text(18, 16);
 
     font-family: var(--font-family-base);
     font-weight: 400;
-    font-size: 15px;
     line-height: 1;
     color: var(--color-text);
     background-color: var(--color-white-alt);
