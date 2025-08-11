@@ -2,6 +2,7 @@
 
 :root {
     --color-primary: #760135;
+    --color-primary-alt: #d04b7a;
     --color-white: #ffffff;
     --color-white-alt: #f7f9fa;
     --color-text: #0d0d0d;
@@ -33,6 +34,9 @@
     --container-width-s: 1100px;
 
     --container-padding-x: 60px;
+    @include media.tablet {
+        --container-padding-x: 5px;
+    }
     --input-height: 40px;
 
     --transition-duration: 0.2s;
